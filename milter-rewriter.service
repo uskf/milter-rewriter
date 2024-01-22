@@ -1,0 +1,13 @@
+[Unit]
+Description=Rewrite Milter
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=postfix
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/local/sbin/milter-rewriter.py
+PIDFile=/run/milter-rewriter/milter-rewriter.pid
+
+[Install]
+WantedBy=multi-user.target
